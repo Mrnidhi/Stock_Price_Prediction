@@ -6,17 +6,9 @@ from airflow.decorators import dag, task
 @dag(schedule_interval="@daily", start_date=days_ago(1), catchup=False)
 def forecasting_dag():
     def return_snowflake_conn():
-        # Establish a connection to Snowflake using your credentials
-        from airflow.models import Variable
-        import snowflake.connector
-        
-        conn = snowflake.connector.connect(
-            user=Variable.get("snowflake_userid"),
-            password=Variable.get("snowflake_password"),
-            account=Variable.get("snowflake_account"),
-            warehouse=Variable.get("snowflake_warehouse"),
-            database=Variable.get("snowflake_database")
-        )
+        # Establish a connection to Snowflake
+        hook = SnowflakeHook(snowflake_conn_id='snowflake_default')
+        conn = hook.get_conn()
         return conn.cursor()
 
     @task()
