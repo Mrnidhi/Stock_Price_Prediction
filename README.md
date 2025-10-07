@@ -1,6 +1,6 @@
 # Data Warehouse Lab 1
 
-Hey there! 👋 This is Data Warehouse Lab 1 where we're building a cool stock price prediction system.
+Hey there! 👋 This is Data Warehouse Lab 1, where we're building a cool stock price prediction system.
 
 Think of it as a smart assistant that watches Google and Microsoft stocks, learns from their past behavior, and tries to predict what might happen next week. Pretty neat, right?
 
@@ -17,20 +17,20 @@ We're creating an automated system that:
 
 ```
 Stock_Price_Prediction/
-├── etl_pipeline.py          # Gets the stock data and puts it in Snowflake
+├── etl_pipeline.py          # Gets the stock data and puts it into Snowflake
 ├── forecast_pipeline.py     # Makes predictions using ML
-├── credentials_setup.md     # How to set up your Snowflake account
+├── credentials_setup.md     # Instructions to set up your Snowflake account
 └── requirements.txt         # Python packages needed
 ```
 
 ## Getting Started
 
-1. Set up your Snowflake credentials (check `credentials_setup.md`)
-2. Install the Python packages: `pip install -r requirements.txt`
-3. Copy the pipeline files to your Airflow setup
+1. Set up your Snowflake credentials (check `credentials_setup.md`).
+2. Install the Python packages: `pip install -r requirements.txt`.
+3. Copy the pipeline files to your Airflow setup.
 4. Let it run and watch the magic happen! ✨
 
-That's it! The system will automatically fetch data daily and make predictions for the next 7 days. Pretty straightforward once you get your Snowflake account connected.
+That's it! The system will automatically fetch data daily and make predictions for the next 7 days. It's pretty straightforward once you get your Snowflake account connected.
 
 Happy coding! 🚀
 
@@ -69,7 +69,7 @@ flowchart TD
 ### ETL Notes
 
 * **Extract**: Pulls OHLCV for tickers like `GOOGL` and `MSFT`.
-* **Transform**: Cleans columns, standardizes datatypes/timezones, and tags with ticker.
+* **Transform**: Cleans columns, standardizes datatypes/timezones, and tags with tickers.
 * **Load**: Uses the Snowflake Python connector or `COPY INTO` for efficient loading.
 * **DQ Checks**: Simple assertions to catch missing days or out-of-range values.
 
@@ -119,7 +119,7 @@ flowchart TD
 
 ## Environments & Credentials
 
-* Store Snowflake creds in Airflow Connections/Variables.
+* Store Snowflake credentials in Airflow Connections/Variables.
 * Parameterize tickers (default: `GOOGL`, `MSFT`) and forecast horizon (default: 7).
 
 ## Troubleshooting
